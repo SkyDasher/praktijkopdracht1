@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="ded536f5-f490-4925-8077-26b3f80b8e20" activeEnvironment="Default" name="PaneelService" resourceRoot="" soapui-version="5.3.0" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="eba07620-d241-4579-8ea1-eb8ca6356a95" wsaVersion="NONE" name="WS-Binding" type="wsdl" bindingName="{wsdlPaneel}WS-Binding" soapVersion="1_1" anonymous="optional" definition="file:/C:/Users/KevinPC/Desktop/HU/WeekOpdracht_1/PraktijkOpdracht1/PaneelService.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:\C:\Users\KevinPC\Desktop\HU\WeekOpdracht_1\PraktijkOpdracht1\PaneelService.wsdl"><con:part><con:url>file:\C:\Users\KevinPC\Desktop\HU\WeekOpdracht_1\PraktijkOpdracht1\PaneelService.wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="wsdlPaneel" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:req="PaneelStorageReq" xmlns:rsp="PaneelStorageResp" xmlns:flt="PaneelStorageFout" xmlns:srv="wsdlPaneel">
+  <wsdl:types>
+    <xsd:schema>
+      <xsd:import namespace="PaneelStorageReq" schemaLocation="PaneelReq.xsd"/>
+      <xsd:import namespace="PaneelStorageResp" schemaLocation="PaneelResp.xsd"/>
+      <xsd:import namespace="PaneelStorageFout" schemaLocation="PaneelFout.xsd"/>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="request">
+    <wsdl:part name="request" element="req:PaneelReq"/>
+  </wsdl:message>
+  <wsdl:message name="response">
+    <wsdl:part name="response" element="rsp:PaneelResp"/>
+  </wsdl:message>
+  <wsdl:message name="error">
+    <wsdl:part name="error" element="flt:error"/>
+  </wsdl:message>
+  <wsdl:portType name="WS-Interface">
+    <wsdl:operation name="storePaneel">
+      <wsdl:input message="srv:request"/>
+      <wsdl:output message="srv:response"/>
+      <wsdl:fault name="error" message="srv:error"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WS-Binding" type="srv:WS-Interface">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="storePaneel">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="error">
+        <soap:fault name="error" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PaneelService">
+    <wsdl:port name="WS-Port" binding="srv:WS-Binding">
+      <soap:address location="/services/HelloWorld"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>file:\C:\Users\KevinPC\Desktop\HU\WeekOpdracht_1\PraktijkOpdracht1\PaneelReq.xsd</con:url><con:content><![CDATA[<xs:schema targetNamespace="PaneelStorageReq" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="PaneelStorageReq">
+  <xs:element name="PaneelReq" type="tns:request"/>
+  <xs:complexType name="request">
+    <xs:all minOccurs="1">
+      <xs:element name="id" type="xs:integer"/>
+      <xs:element name="name" type="xs:string"/>
+      <xs:element name="cost" type="xs:integer"/>
+      <xs:element name="storedate" type="xs:date"/>
+    </xs:all>
+  </xs:complexType>
+  <xs:annotation>
+    <xs:appInfo>XSD PaneelReq Notitie</xs:appInfo>
+    <xs:documentation xml:lang="nl">Ik heb voor complexType gekozen omdat ik daar meerdere elementen kan invoegen
+            voor het opslaan van een zonnepaneel.
+            beide complextypes (van zowel req als resp) heb ik de respectieve
+            namen gegeven van request en response om het simpel te houden.
+            met de response krijg je alleen het ID van de opgeslagen paneel.</xs:documentation>
+  </xs:annotation>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>file:\C:\Users\KevinPC\Desktop\HU\WeekOpdracht_1\PraktijkOpdracht1\PaneelResp.xsd</con:url><con:content><![CDATA[<xs:schema targetNamespace="PaneelStorageResp" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="PaneelStorageResp">
+  <xs:element name="PaneelResp" type="tns:response"/>
+  <xs:complexType name="response">
+    <xs:all minOccurs="1">
+      <xs:element name="storedPaneelID" type="xs:integer"/>
+    </xs:all>
+  </xs:complexType>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>file:\C:\Users\KevinPC\Desktop\HU\WeekOpdracht_1\PraktijkOpdracht1\PaneelFout.xsd</con:url><con:content><![CDATA[<schema targetNamespace="PaneelStorageFout" elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="PaneelStorageFout">
+  <element name="error">
+    <complexType>
+      <sequence>
+        <element name="errorCode" type="short" nillable="false"/>
+        <element name="message" type="string" minOccurs="0" maxOccurs="1"/>
+      </sequence>
+    </complexType>
+  </element>
+</schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/services/HelloWorld</con:endpoint></con:endpoints><con:operation id="19229e4d-7497-47fb-9630-00fc078b600b" isOneWay="false" action="" name="storePaneel" bindingOperationName="storePaneel" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="79da4bd7-200f-4613-800f-600f043b0020" name="mijnbericht.request.soap 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/services/HelloWorld</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pan="PaneelStorageReq">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <pan:PaneelReq>\r
+         <!--You may enter the following 4 items in any order-->\r
+         <id>1</id>\r
+         <name>Paneel1</name>\r
+         <cost>1000</cost>\r
+         <storedate>2017-03-12</storedate>\r
+      </pan:PaneelReq>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="wsdlPaneel/WS-Interface/storePaneelRequest"/><con:wsrmConfig version="1.2"/></con:call><con:call id="d11184f1-cb19-4424-8521-2e0d5cabfa2c" name="mijnbericht.request.soap 2"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/services/HelloWorld</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pan="PaneelStorageReq">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <pan:PaneelReq>\r
+         <!--You may enter the following 4 items in any order-->\r
+         <id>2</id>\r
+         <name>Paneel2</name>\r
+         <cost>2000</cost>\r
+         <storedate>2017-03-11</storedate>\r
+      </pan:PaneelReq>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="wsdlPaneel/WS-Interface/storePaneelRequest"/><con:wsrmConfig version="1.2"/></con:call><con:call id="ac19c3a8-4eb1-4f76-ae04-4734d4e48fe3" name="mijnbericht.request.soap 3"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/services/HelloWorld</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pan="PaneelStorageReq">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <pan:PaneelReq>\r
+         <!--You may enter the following 4 items in any order-->\r
+         <id>3</id>\r
+         <name>SuperPaneel</name>\r
+         <cost>20</cost>\r
+         <storedate>2017-12-12</storedate>\r
+      </pan:PaneelReq>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="wsdlPaneel/WS-Interface/storePaneelRequest"/><con:wsrmConfig version="1.2"/></con:call><con:call id="ac18b325-edb8-4da8-a440-3c00e9f88ef8" name="mijnbericht.request.soap 4"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/services/HelloWorld</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pan="PaneelStorageReq">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <pan:PaneelReq>\r
+         <!--You may enter the following 4 items in any order-->\r
+         <id>4</id>\r
+         <name>SuperPaneel 5000</name>\r
+         <cost>100000</cost>\r
+         <storedate>2017-03-20</storedate>\r
+      </pan:PaneelReq>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="wsdlPaneel/WS-Interface/storePaneelRequest"/><con:wsrmConfig version="1.2"/></con:call><con:call id="c51ef0bd-e9c3-469c-8198-fc34b77a1958" name="mijnbericht.request.soap 5"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/services/HelloWorld</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pan="PaneelStorageReq">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <pan:PaneelReq>\r
+         <!--You may enter the following 4 items in any order-->\r
+         <id>6</id>\r
+         <name>DingenPaneel</name>\r
+         <cost>1</cost>\r
+         <storedate>1980-01-01</storedate>\r
+      </pan:PaneelReq>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="wsdlPaneel/WS-Interface/storePaneelRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>

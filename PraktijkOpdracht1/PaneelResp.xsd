@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="PaneelStorageResp"
+           targetNamespace="PaneelStorageResp"
+>
+    <xs:element name="PaneelResp" type="tns:response" />
+    <xs:complexType name="response">
+        <xs:all minOccurs="1">
+            <xs:element name="storedPaneelID" type="xs:integer" />
+        </xs:all>
+    </xs:complexType>
+</xs:schema>
