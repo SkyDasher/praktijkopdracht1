@@ -1,0 +1,15 @@
+<application>
+  <component name="NodeJsLocalInterpreters">
+    <local-interpreter path="C:/Program Files/nodejs/node.exe" />
+  </component>
+  <component name="WebServicesPluginSettings" SelectedPlatform="Glassfish / JAX-WS 2.2 RI / Metro 1.X / JWSDP 2.2">
+    <StubPackage>PaneelGen</StubPackage>
+    <StubPackage>killprefix</StubPackage>
+    <StubPackage>leukeprefix</StubPackage>
+    <StubPackage>XsdGen</StubPackage>
+    <StubUrl>file:/$USER_HOME$/Desktop/HU/WeekOpdracht/PraktijkOpdracht1/PaneelService.wsdl</StubUrl>
+    <StubUrl>file:/$USER_HOME$/Desktop/HU/WeekOpdracht/PowerService.wsdl</StubUrl>
+    <StubUrl>file:/$USER_HOME$/Desktop/HU/WeekOpdracht_1/PowerService.wsdl</StubUrl>
+    <JAXBUrl>file:/$USER_HOME$/Desktop/HU/V2a_Blok_2/ToSad/workspace/opdracht1.1/schema1.xsd</JAXBUrl>
+  </component>
+</application>
